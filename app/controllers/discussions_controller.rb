@@ -3,6 +3,8 @@ class DiscussionsController < ApplicationController
   # GET /discussions.xml
   def index
     @discussions = Discussion.all
+    @discussion = Discussion.new
+    @discussion.posts.build
 
     respond_to do |format|
       format.html # index.html.erb
