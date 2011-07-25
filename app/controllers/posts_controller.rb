@@ -44,7 +44,6 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        @post.discussion.update_attribute('updated_at',@post.updated_at)
         format.html { redirect_to(discussions_url(), :notice => 'Post was successfully created.') }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else

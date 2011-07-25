@@ -5,3 +5,15 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+Discussion.delete_all
+
+d1 = Discussion.create
+d2 = Discussion.create
+d3 = Discussion.create
+
+d1.posts.create(:title => '1-1')
+d1.posts.create(:title => '1-2')
+
+d3.posts.create(:title => '3-1')
+
+d2.posts.create(:title => '2-1')

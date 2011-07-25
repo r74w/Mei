@@ -2,6 +2,7 @@
 <%= render 'form' %>
 <% @discussions.each do |discussion| %>
   <div class="discussion">
+    <%= discussion.updated_at %>
     <%= render discussion.posts %>
     <%= link_to 'Show', discussion %>
     <%= link_to 'Edit', edit_discussion_path(discussion) %>
