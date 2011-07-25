@@ -13,7 +13,7 @@
 
   <%= f.hidden_field :discussion_id %>
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
@@ -21,10 +21,13 @@
     <%= f.text_area :content, :rows => 3 %>
   </div>
   <div class="field">
-    <%= f.label :author %><br />
+    <%= f.label :author %>
     <%= f.text_field :author %>
   </div>
-  <%= f.file_field :image %>
+  <div class="field">
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

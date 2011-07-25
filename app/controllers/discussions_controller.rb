@@ -3,8 +3,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions.xml
   def index
     @discussions = Discussion.order('updated_at DESC').page(params[:page]).per(5)
-    @discussion = Discussion.new
-    @discussion.posts.build
+    @post = Post.new
 
     respond_to do |format|
       format.html # index.html.erb
