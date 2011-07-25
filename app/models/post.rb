@@ -1,5 +1,6 @@
 class Post < ActiveRecord::Base
   belongs_to :discussion
+  has_attached_file :image, :styles => { :medium => "300x300>" }
   after_create :update_discussion
 
   def update_discussion

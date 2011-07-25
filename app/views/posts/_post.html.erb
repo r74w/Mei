@@ -1,5 +1,9 @@
 <div class="post">
 
+  <% if post.image? %>
+    <%= image_tag post.image.url(:medium) %>
+  <% end %>
+
   <p>
     <b>Title:</b>
     <%= post.title %>

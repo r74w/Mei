@@ -2,7 +2,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions
   # GET /discussions.xml
   def index
-    @discussions = Discussion.find(:all, :order => 'updated_at DESC')
+    @discussions = Discussion.order('updated_at DESC').page(params[:page]).per(5)
     @discussion = Discussion.new
     @discussion.posts.build
 
