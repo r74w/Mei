@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.9)
       activesupport (= 3.0.9)
     activesupport (3.0.9)
+    acts-as-dag (2.5.5)
     arel (2.0.10)
     builder (2.1.2)
     cocaine (0.1.0)
@@ -78,6 +79,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  acts-as-dag (~> 2.5.3)
   kaminari
   paperclip (~> 2.3)
   rails (= 3.0.9)

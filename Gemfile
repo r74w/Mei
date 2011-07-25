@@ -7,7 +7,8 @@ gem 'rails', '3.0.9'
 
 gem 'sqlite3'
 gem 'kaminari'
-gem "paperclip", "~> 2.3"
+gem 'paperclip', '~> 2.3'
+gem 'acts-as-dag', '~> 2.5.3'
 
 # Use unicorn as the web server
 # gem 'unicorn'

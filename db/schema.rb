@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725063330) do
+ActiveRecord::Schema.define(:version => 20110725090802) do
 
   create_table "discussions", :force => true do |t|
     t.datetime "created_at"
@@ -28,6 +28,15 @@ ActiveRecord::Schema.define(:version => 20110725063330) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "replies", :force => true do |t|
+    t.integer  "ancestor_id"
+    t.integer  "descendant_id"
+    t.boolean  "direct"
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -1,5 +1,7 @@
 <div class="post">
 
+  <%= content_tag(:div, "##{post.id}", :id => "p#{post.id}") %>  
+
   <% if post.image? %>
     <%= image_tag post.image.url(:medium) %>
   <% end %>
@@ -19,6 +21,23 @@
     <%= post.author %>
   </p>
 
+  <% unless post.parents.empty? %>
+  <p>
+    <b>Parents</b>
+    <% post.parents.each do |p| %>
+      <%= link_to "##{p.id}", "#p#{p.id}" %>
+    <% end %>
+  </p>
+  <% end %>
+
+  <% unless post.children.empty? %>
+  <p>
+    <b>children</b>
+    <% post.children.each do |p| %>
+      <%= link_to "##{p.id}", "#p#{p.id}" %>
+    <% end %>
+    </p>
+  <% end %>
 
   <%= link_to 'Edit', edit_post_path(post) %>
 </div>
