@@ -21,7 +21,7 @@ class DiscussionsControllerTest < ActionController::TestCase
       post :create, :discussion => @discussion.attributes
     end
 
-    assert_redirected_to discussion_path(assigns(:discussion))
+    assert_redirected_to discussions_path()
   end
 
   test "should show discussion" do

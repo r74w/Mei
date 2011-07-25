@@ -48,7 +48,7 @@ class DiscussionsController < ApplicationController
 
     respond_to do |format|
       if @discussion.save
-        format.html { redirect_to(@discussion, :notice => 'Discussion was successfully created.') }
+        format.html { redirect_to(discussions_url, :notice => 'Discussion was successfully created.') }
         format.xml  { render :xml => @discussion, :status => :created, :location => @discussion }
       else
         format.html { render :action => "new" }
