@@ -44,23 +44,24 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to(@post, :notice => 'Post was successfully created.') }
+        @post.discussion.update_attribute('updated_at',@post.updated_at)
+        format.html { redirect_to(discussions_url(), :notice => 'Post was successfully created.') }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
-        format.html { render :action => "new" }
+        format.html { redirect_to :back }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
     end
   end
 
-  # PUT /posts/1
-  # PUT /posts/1.xml
+  # put /posts/1
+  # put /posts/1.xml
   def update
-    @post = Post.find(params[:id])
+    @post = post.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to(@post, :notice => 'Post was successfully updated.') }
+        format.html { redirect_to(@post, :notice => 'post was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -69,10 +70,10 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.xml
+  # delete /posts/1
+  # delete /posts/1.xml
   def destroy
-    @post = Post.find(params[:id])
+    @post = post.find(params[:id])
     @post.destroy
 
     respond_to do |format|

@@ -2,7 +2,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions
   # GET /discussions.xml
   def index
-    @discussions = Discussion.all
+    @discussions = Discussion.find(:all, :order => 'updated_at DESC')
     @discussion = Discussion.new
     @discussion.posts.build
 
@@ -16,6 +16,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/1.xml
   def show
     @discussion = Discussion.find(params[:id])
+    @post = Post.new(:discussion => @discussion)
 
     respond_to do |format|
       format.html # show.html.erb
