@@ -14,6 +14,9 @@ d3 = Discussion.create
 
 d1.posts.create(:title => '1-1')
 d1.posts.create(:title => '1-2')
+d1.posts.create(:title => '1-3')
+d1.posts.create(:title => '1-4')
+d1.posts.create(:title => '1-5')
 
 d3.posts.create(:title => '3-1')
 
