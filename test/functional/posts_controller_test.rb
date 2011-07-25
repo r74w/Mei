@@ -2,6 +2,8 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   setup do
+    @discussion = discussions(:one)
+#    post :create, :discussion => @discussion.attributes
     @post = posts(:one)
   end
 
@@ -21,7 +23,7 @@ class PostsControllerTest < ActionController::TestCase
       post :create, :post => @post.attributes
     end
 
-    assert_redirected_to post_path(assigns(:post))
+    assert_redirected_to discussions_path
   end
 
   test "should show post" do

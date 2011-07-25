@@ -57,7 +57,7 @@ class PostsController < ApplicationController
   # put /posts/1
   # put /posts/1.xml
   def update
-    @post = post.find(params[:id])
+    @post = Post.find(params[:id])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -73,7 +73,7 @@ class PostsController < ApplicationController
   # delete /posts/1
   # delete /posts/1.xml
   def destroy
-    @post = post.find(params[:id])
+    @post = Post.find(params[:id])
     @post.destroy
 
     respond_to do |format|

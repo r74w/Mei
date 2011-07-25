@@ -10,7 +10,7 @@
       </ul>
     </div>
   <% end %>
-  <% f.fields_for :posts do |builder| %>
+  <%= f.fields_for :posts do |builder| %>
     <div class="field">
       <%= builder.label :title %>
       <%= builder.text_field :title %>
