@@ -1,6 +1,6 @@
 <h1>Listing discussions</h1>
 <%= render :partial => 'posts/form' %>
-<%= render 'recent' %>
+<%= render 'latest' %>
 <% @discussions.each do |discussion| %>
   <div class="discussion">
     <%= discussion.updated_at %>
