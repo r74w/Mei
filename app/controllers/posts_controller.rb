@@ -47,7 +47,7 @@ class PostsController < ApplicationController
         format.html { redirect_to(discussions_url, :notice => 'Post was successfully created.') }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
       else
-        format.html { redirect_to :back }
+        format.html { render :action => "new" }
         format.xml  { render :xml => @post.errors, :status => :unprocessable_entity }
       end
     end
