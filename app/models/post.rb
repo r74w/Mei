@@ -4,7 +4,9 @@ class Post < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "300x300>" }
   has_dag_links :link_class_name => 'Reply'
 
-  before_save :author_tripcoding
+  validates_presence_of :title
+
+  before_create :author_tripcoding
   around_create :update_discussion
   after_save :update_dag
 
@@ -27,7 +29,7 @@ class Post < ActiveRecord::Base
   end
 
   def author_tripcoding
-    self.author = tripcode(self.author)
+    self.author = tripcode(self.author) unless self.author.nil?
   end
 
   private
