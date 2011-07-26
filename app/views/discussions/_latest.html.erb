@@ -1,0 +1,5 @@
+<ol class="latest">
+  <% @latest.each do |d| %>
+    <li><%= link_to d.title, d %></li>
+  <% end %>
+</ol>

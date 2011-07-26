@@ -1,15 +1,17 @@
 <h1>Listing discussions</h1>
 <%= render :partial => 'posts/form' %>
+<%= render 'recent' %>
 <% @discussions.each do |discussion| %>
   <div class="discussion">
     <%= discussion.updated_at %>
 
-    <%= render discussion.posts.first %>
     <% if (discussion.posts.length - 1) > AppConfig.last_reply_count then %>
-      <%= link_to 'View omitted', discussion %>
+      <%= render discussion.posts.first %>
+      <%= link_to 'Read omitted replies', discussion %>
+      <%= render discussion.posts.last(AppConfig.last_reply_count) %>
+    <% else %>
+      <%= render discussion.posts %>
     <% end %>
-    
-    <%= render discussion.posts.last(AppConfig.last_reply_count) %>
 
     <%= link_to 'Reply/Show', discussion %>
     <%= link_to 'Destroy', discussion, :confirm => 'Are you sure?', :method => :delete %>

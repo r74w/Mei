@@ -1,25 +1,25 @@
 <div class="post">
 
-  <%= content_tag(:div, "##{post.id}", :id => "p#{post.id}") %>  
-
   <% if post.image? %>
     <%= image_tag post.image.url(:medium) %>
   <% end %>
 
-  <p>
-    <b>Title:</b>
-    <%= post.title %>
-  </p>
+  <%= content_tag(:div, "##{post.id} #{post.updated_at}", :id => "p#{post.id}", :class => "meta") %>
 
-  <p>
-    <b>Content:</b>
+  <% unless post.title.nil? then %>
+    <h2><%= post.title %></h2>
+  <% end %>
+
+  <% unless post.content.nil? then %>
     <%= post.content %>
-  </p>
+  <% end %>
 
-  <p>
-    <b>Author:</b>
-    <%= post.author %>
-  </p>
+  <% unless post.author.nil? then %>
+    <p>
+      <b>by:</b>
+      <%= post.author %>
+    </p>
+  <% end %>
 
   <% unless post.parents.empty? %>
   <p>

@@ -4,6 +4,7 @@ class DiscussionsController < ApplicationController
   def index
     @discussions = Discussion.order('updated_at DESC').page(params[:page]).per(5)
     @post = Post.new
+    @latest = Discussion.latest_discussions
 
     respond_to do |format|
       format.html # index.html.erb
