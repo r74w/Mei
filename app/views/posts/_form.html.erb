@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <%= f.hidden_field :discussion_id %>
+  <%= f.hidden_field :discussion_id unless @discussion.nil? %>
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -29,6 +29,6 @@
     <%= f.file_field :image %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit (@discussion.nil? ? 'Create Discussion' : 'Reply') %>
   </div>
 <% end %>

@@ -11,12 +11,11 @@
   <% end %>
 
   <% unless post.content.nil? then %>
-    <%= post.content %>
+    <p><%= post.content %></p>
   <% end %>
 
   <% unless post.author.nil? then %>
     <p>
-      <b>by:</b>
       <%= post.author %>
     </p>
   <% end %>

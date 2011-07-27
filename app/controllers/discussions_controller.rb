@@ -27,34 +27,12 @@ class DiscussionsController < ApplicationController
   # GET /discussions/new
   # GET /discussions/new.xml
   def new
-    @discussion = Discussion.new
-    @discussion.posts.build
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @discussion }
-    end
+    redirect_to new_post_url()
   end
 
   # GET /discussions/1/edit
   def edit
     @discussion = Discussion.find(params[:id])
-  end
-
-  # POST /discussions
-  # POST /discussions.xml
-  def create
-    @discussion = Discussion.new(params[:discussion])
-
-    respond_to do |format|
-      if @discussion.save
-        format.html { redirect_to(discussions_url, :notice => 'Discussion was successfully created.') }
-        format.xml  { render :xml => @discussion, :status => :created, :location => @discussion }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @discussion.errors, :status => :unprocessable_entity }
-      end
-    end
   end
 
   # PUT /discussions/1

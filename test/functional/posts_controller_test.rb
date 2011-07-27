@@ -26,6 +26,14 @@ class PostsControllerTest < ActionController::TestCase
     assert_redirected_to discussions_path
   end
 
+  test "should create unicode post" do
+    assert_difference('Post.count') do
+      post :create, :post => posts(:unicode).attributes
+    end
+
+    assert_redirected_to discussions_path
+  end
+
   test "should show post" do
     get :show, :id => @post.to_param
     assert_response :success

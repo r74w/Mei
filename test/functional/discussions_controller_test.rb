@@ -13,15 +13,7 @@ class DiscussionsControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
-    assert_response :success
-  end
-
-  test "should create discussion" do
-    assert_difference('Discussion.count') do
-      post :create, :discussion => @discussion.attributes
-    end
-
-    assert_redirected_to discussions_path()
+    assert_redirected_to new_post_path
   end
 
   test "should show discussion" do

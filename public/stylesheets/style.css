@@ -47,3 +47,6 @@ ol.latest li {
   padding: 5px;
   min-width:100px;
 }
+h2 {
+  display:inline;
+}

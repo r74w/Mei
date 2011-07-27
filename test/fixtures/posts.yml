@@ -11,3 +11,9 @@ two:
   title: MyString
   content: MyText
   author: MyString
+
+unicode:
+  discussion: one
+  title: 標題
+  content: 內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容內容
+  author: 作者#密碼
