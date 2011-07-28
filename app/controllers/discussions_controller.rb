@@ -3,7 +3,8 @@ class DiscussionsController < ApplicationController
   # GET /discussions.xml
   def index
     @discussions = Discussion.order('updated_at DESC').page(params[:page]).per(5)
-    @post = Post.new
+    @discussion = Discussion.new
+    @post = @discussion.posts.build
     @latest = Discussion.latest_discussions
 
     respond_to do |format|
@@ -34,6 +35,22 @@ class DiscussionsController < ApplicationController
   def edit
     @discussion = Discussion.find(params[:id])
   end
+
+  # POST /discussions
+  # POST /discussions.xml
+  def create
+    @discussion = Discussion.new(params[:discussion])
+
+    respond_to do |format|
+      if @discussion.save
+        format.html { redirect_to(discussions_url, :notice => 'Discussion was successfully created.') }
+        format.xml  { render :xml => @discussion, :status => :created, :location => @discussion }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @discussion.errors, :status => :unprocessable_entity }
+      end
+    end
+  end  
 
   # PUT /discussions/1
   # PUT /discussions/1.xml

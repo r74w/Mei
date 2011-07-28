@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
 
   before_create :author_tripcoding
-  around_create :update_discussion
+#  around_create :update_discussion
   after_save :update_dag
 
   protected
