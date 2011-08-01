@@ -18,6 +18,7 @@ class DiscussionsController < ApplicationController
   def show
     @discussion = Discussion.find(params[:id])
     @post = Post.new(:discussion => @discussion)
+    @submit_text = "Post Reply"
 
     respond_to do |format|
       format.html # show.html.erb
