@@ -1,1 +1,34 @@
-please use posts/_form.html.erb instead
+<%= form_for(@discussion, :html => { :multipart => true }) do |f| %>
+  <% if @discussion.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discussion.errors.count, "error") %> prohibited this discussion from being saved:</h2>
+
+      <ul>
+      <% @discussion.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.fields_for :posts, @post do |builder| %>
+    <div class="field">
+      <%= builder.label :title %>
+      <%= builder.text_field :title %>
+    </div>
+    <div class="field">
+      <%= builder.label :content %><br />
+      <%= builder.text_area :content, :rows => 3 %>
+    </div>
+    <div class="field">
+      <%= builder.label :author %>
+      <%= builder.text_field :author %>
+    </div>
+    <div class="field">
+      <%= builder.label :image %>
+      <%= builder.file_field :image %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit @submit_text %>
+  </div>
+<% end %>
