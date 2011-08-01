@@ -29,7 +29,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/new
   # GET /discussions/new.xml
   def new
-    redirect_to new_post_url()
+    redirect_to new_discussion_url()
   end
 
   # GET /discussions/1/edit

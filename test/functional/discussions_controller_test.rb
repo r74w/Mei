@@ -13,7 +13,7 @@ class DiscussionsControllerTest < ActionController::TestCase
 
   test "should get new" do
     get :new
-    assert_redirected_to new_post_path
+    assert_redirected_to new_discussion_path
   end
 
   test "should show discussion" do
@@ -38,4 +38,21 @@ class DiscussionsControllerTest < ActionController::TestCase
 
     assert_redirected_to discussions_path
   end
+
+  test "should create discussion" do
+    assert_difference('Discussion.count') do
+#      @discussion.posts = posts(:one).attributes
+      post :create, :discussion => @discussion
+    end
+
+    assert_redirected_to discussions_path
+  end
+
+#  test "should create unicode discussion" do
+#    assert_difference('Discussion.count') do
+#      post :create, :discussion => posts(:unicode).attributes
+#    end
+
+#    assert_redirected_to discussions_path
+#  end
 end
