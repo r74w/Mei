@@ -7,8 +7,8 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<p id="notice"><%= notice %></p>
-<%= yield %>
-
+  <h1><%= link_to AppConfig.site_title, discussions_path %></h1>
+  <p id="notice"><%= notice %></p>
+  <%= yield %>
 </body>
 </html>

@@ -63,7 +63,11 @@ class DiscussionsController < ApplicationController
         format.html { redirect_to(@discussion, :notice => 'Discussion was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { 
+          @post = @discussion.posts.last  #hack
+          @submit_text = "Post Reply"
+          render :action => "edit"
+        }
         format.xml  { render :xml => @discussion.errors, :status => :unprocessable_entity }
       end
     end
