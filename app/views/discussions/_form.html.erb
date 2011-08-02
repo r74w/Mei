@@ -10,22 +10,22 @@
       </ul>
     </div>
   <% end %>
-  <%= f.fields_for :posts, @post do |builder| %>
+  <%= f.fields_for :posts, @post do |p| %>
     <div class="field">
-      <%= builder.label :title %>
-      <%= builder.text_field :title %>
+      <%= p.label :title %>
+      <%= p.text_field :title %>
     </div>
     <div class="field">
-      <%= builder.label :content %><br />
-      <%= builder.text_area :content, :rows => 3 %>
+      <%= p.label :content %><br />
+      <%= p.text_area :content, :rows => 3 %>
     </div>
     <div class="field">
-      <%= builder.label :author %>
-      <%= builder.text_field :author %>
+      <%= p.label :author %>
+      <%= p.text_field :author %>
     </div>
     <div class="field">
-      <%= builder.label :image %>
-      <%= builder.file_field :image %>
+      <%= p.label :image %>
+      <%= p.file_field :image %>
     </div>
   <% end %>
   <div class="actions">
