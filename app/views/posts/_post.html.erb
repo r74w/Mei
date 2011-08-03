@@ -11,7 +11,7 @@
   <% end %>
 
   <% unless post.content.nil? then %>
-    <p><%= post.content %></p>
+    <p><%= markdown(post.content) %></p>
   <% end %>
 
   <% unless post.author.nil? then %>
