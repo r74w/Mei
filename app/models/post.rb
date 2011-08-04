@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
 
   def update_dag
     unless content.nil? then
-      content.scan(/^> ?(\d+)$/).each do |id|
+      content.scan(/^> ?(\d+)\s*$/).each do |id|
         parents << Post.find(id[0])
       end
     end
