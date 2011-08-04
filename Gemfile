@@ -10,6 +10,7 @@ gem 'kaminari'
 gem 'paperclip', '~> 2.3'
 gem 'acts-as-dag', '~> 2.5.3'
 gem 'formatize'
+gem 'jquery-rails', '~>1.0.12'
 
 # Use unicorn as the web server
 # gem 'unicorn'
