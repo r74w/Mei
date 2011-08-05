@@ -1,10 +1,9 @@
-<div class="post">
+<div class="post" id="p<%= post.id %>">
+  <%= content_tag(:div, "#{post.updated_at} ##{post.id}", :class => "meta") %>
 
   <% if post.image? %>
     <%= image_tag post.image.url(:medium) %>
   <% end %>
-
-  <%= content_tag(:div, "##{post.id} #{post.updated_at}", :id => "p#{post.id}", :class => "meta") %>
 
   <% unless post.title.nil? then %>
     <h2><%= post.title %></h2>
@@ -36,5 +35,7 @@
   <%=raw post.children.map{|p| link_to("##{p.id}", "#p#{p.id}")}.join(', ') %> replied
   </p>
   <% end %>
+
+  <div class="action_menu"><a href="#">Reply</a></div>
 
 </div>

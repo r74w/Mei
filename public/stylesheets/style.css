@@ -35,11 +35,16 @@ form {
 .reply_list {color:#999}
 .reply {margin-left:30px}
 
+.action_menu {
+  text-align:right;
+}
+
 blockquote {
   border: 1px solid #000;
   border-radius: 5px;
   padding: 0 10px;
-  width: 70%
+  width: 70%;
+  margin-left: 0px;
 }
 
 /* Latest discussions */
