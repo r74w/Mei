@@ -12,13 +12,14 @@ class Post < ActiveRecord::Base
 
   protected
 
-  def update_discussion
-    if self.discussion.nil? then
-      self.discussion = Discussion.create
-    end
-    yield
-    self.discussion.update_attribute('updated_at',self.updated_at)
-  end
+# Not used after using nested form
+#  def update_discussion
+#    if self.discussion.nil? then
+#      self.discussion = Discussion.create
+#    end
+#    yield
+#    self.discussion.update_attribute('updated_at',self.updated_at)
+#  end
 
   def parse_reply_to
     unless content.nil? then
@@ -46,7 +47,7 @@ class Post < ActiveRecord::Base
     if input.include?('#') then
       p = input.partition("#")
 
-      p[2].encode!('SJIS')
+      # p[2].encode!('SJIS')
       salt = (p[2] + 'H..')[1, 2].gsub(/[^\.-z]/, '..').tr(':;<=>?@[\]^_`', 'ABCDEFGabcdef')
 
       input = p[0] + '◆' + p[2].crypt(salt)[-10 .. -1]
