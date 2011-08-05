@@ -4,11 +4,11 @@ class Post < ActiveRecord::Base
   has_attached_file :image, :styles => { :medium => "300x300>" }
   has_dag_links :link_class_name => 'Reply'
 
-  validates_presence_of :title
+#  validates_presence_of :title
 
   before_create :author_tripcoding
 #  around_create :update_discussion
-  after_save :update_dag
+  before_save :parse_reply_to   # check and see if this will be rolled back if save fails
 
   protected
 
@@ -20,11 +20,13 @@ class Post < ActiveRecord::Base
     self.discussion.update_attribute('updated_at',self.updated_at)
   end
 
-  def update_dag
+  def parse_reply_to
     unless content.nil? then
       content.scan(/^> ?(\d+)\s*$/).each do |id|
-        parents << Post.find(id[0])
+        p = Post.find_by_id(id[0])
+        parents << p unless p.nil?
       end
+      content.gsub!(/^(> ?)(\d+)\s*$/,"\\1\[\\2\]\(#p\\2\)\n") # hardcoding newline may create problem on Mac?
     end
   end
 
