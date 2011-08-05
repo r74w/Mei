@@ -1,5 +1,6 @@
 <ol class="latest">
   <% @latest.each do |d| %>
-    <li><%= link_to d.title, d %></li>
+    <% title = (d.title.empty? ? 'untitled' : d.title ) %>
+    <li><%= link_to title, d %></li>
   <% end %>
 </ol>
