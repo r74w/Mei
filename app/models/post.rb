@@ -8,7 +8,7 @@ class Post < ActiveRecord::Base
 
   before_create :author_tripcoding
 #  around_create :update_discussion
-  before_save :parse_reply_to   # check and see if this will be rolled back if save fails
+  before_save :parse_reply_to   # NOTE check and see if this will be rolled back if save fails
 
   protected
 
@@ -26,7 +26,9 @@ class Post < ActiveRecord::Base
         p = Post.find_by_id(id[0])
         parents << p unless p.nil?
       end
-      content.gsub!(/^(> ?)(\d+)\s*$/,"\\1\[\\2\]\(#p\\2\)\n") # hardcoding newline may create problem on Mac?
+      content.gsub!(/^(> ?)(\d+)\s*$/,"\\1\[\\2\]\(#p\\2\)\n")
+      # NOTE hardcoding newline may create problem on Mac?
+      # TODO do this in JS and check for same page anchor
     end
   end
 

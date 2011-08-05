@@ -20,6 +20,7 @@
     </p>
   <% end %>
 
+<!-- # since this is already in post so removed from view
   <% unless post.parents.empty? %>
   <p>
     <b>Parents</b>
@@ -28,14 +29,12 @@
     <% end %>
   </p>
   <% end %>
+-->
 
   <% unless post.children.empty? %>
-  <p>
-    <b>children</b>
-    <% post.children.each do |p| %>
-      <%= link_to "##{p.id}", "#p#{p.id}" %>
-    <% end %>
-    </p>
+  <p class="reply_list">
+  <%=raw post.children.map{|p| link_to("##{p.id}", "#p#{p.id}")}.join(', ') %> replied
+  </p>
   <% end %>
 
 </div>
