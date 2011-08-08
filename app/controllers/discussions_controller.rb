@@ -40,6 +40,10 @@ class DiscussionsController < ApplicationController
   # POST /discussions
   # POST /discussions.xml
   def create
+    if params[:url] != 'http://'  #TODO refactor into constants
+      render :partial => 'layouts/spam' and return
+    end
+
     @discussion = Discussion.new(params[:discussion])
 
     respond_to do |format|

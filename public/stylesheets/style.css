@@ -47,6 +47,10 @@ blockquote {
   margin-left: 0px;
 }
 
+.trap {
+  display:none;
+}
+
 /* Latest discussions */
 ol.latest {
   margin: 0;
