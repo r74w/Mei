@@ -7,21 +7,16 @@ class Post < ActiveRecord::Base
 #  validates_presence_of :title
 
   before_create :author_tripcoding
-#  around_create :update_discussion
+  after_create :update_discussion
   before_save :parse_reply_to   # NOTE check and see if this will be rolled back if save fails
 
   protected
 
-# Not used after using nested form
-#  def update_discussion
-#    if self.discussion.nil? then
-#      self.discussion = Discussion.create
-#    end
-#    yield
-#    self.discussion.update_attribute('updated_at',self.updated_at)
-#  end
+  def update_discussion
+    self.discussion.update_attribute('updated_at',self.updated_at)
+  end
 
-  def parse_reply_to
+    def parse_reply_to
     unless content.nil? then
       content.scan(/^> ?(\d+)\s*$/).each do |id|
         p = Post.find_by_id(id[0])
