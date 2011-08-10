@@ -36,6 +36,8 @@
   </p>
   <% end %>
 
-  <div class="action_menu"><a class="reply" href="#">Reply</a></div>
+  <div class="action_menu">
+    <%= link_to 'Reply', discussion_path(post.discussion_id), :class=>'reply' %>
+  </div>
 
 </div>
