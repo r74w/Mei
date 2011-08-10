@@ -32,12 +32,13 @@ form {
 .meta {
   float:right;
 }
-.reply_list {color:#999}
-.reply {margin-left:30px}
+div.reply_list {color:#999}
+div.reply {margin-left:30px}
 
 .action_menu {
   text-align:right;
 }
+.action_menu a.reply {}
 
 blockquote {
   border: 1px solid #000;
