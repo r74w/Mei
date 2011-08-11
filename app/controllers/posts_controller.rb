@@ -40,7 +40,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
-    @post = Post.new_with_ip(request.env["HTTP_X_FORWARDED_FOR"],params[:post])
+    @post = Post.new(params[:post])
 
     respond_to do |format|
       if @post.save

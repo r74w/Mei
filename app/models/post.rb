@@ -1,5 +1,4 @@
 # encoding: utf-8
-# require 'digest/md5'
 class Post < ActiveRecord::Base
   belongs_to :discussion
   has_attached_file :image, :styles => { :medium => "300x300>" }
@@ -10,11 +9,6 @@ class Post < ActiveRecord::Base
   before_create :author_tripcoding
   after_create :update_discussion
   before_save :parse_reply_to   # NOTE check and see if this will be rolled back if save fails
-
-  # Constructor to set up one_day_id by passing ip
-  def self.new_with_ip(ip, attributes={})
-    self.new(attributes['one_day_id'] = self.get_one_day_id(ip))
-  end
 
   protected
 
@@ -54,12 +48,6 @@ class Post < ActiveRecord::Base
       input = p[0] + '◆' + p[2].crypt(salt)[-10 .. -1]
     end
     return input
-  end
-
-  def self.get_one_day_id(ip)
-    salt_key = '^trdcu%d'
-    today = Date.today.strftime('%Y%m%d')
-    Digest::MD5.hexdigest(ip+salt_key+today).crypt('id').slice(-8,8)
   end
 
 end

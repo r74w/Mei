@@ -44,6 +44,8 @@ class DiscussionsController < ApplicationController
       render :partial => 'layouts/spam' and return
     end
 
+   # Rails.logger.debug("bg:" + request.env["HTTP_X_FORWARDED_FOR"])
+    params[:discussion][:posts_attributes]['0'][:one_day_id] = get_one_day_id(request.remote_ip)
     @discussion = Discussion.new(params[:discussion])
 
     respond_to do |format|
