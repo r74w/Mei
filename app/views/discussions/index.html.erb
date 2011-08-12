@@ -2,18 +2,19 @@
 <%= render 'latest' %>
 <% @discussions.each do |discussion| %>
   <div class="discussion">
-    <%= discussion.updated_at %>
 
     <% if (discussion.posts.length - 1) > AppConfig.last_reply_count then %>
       <%= render discussion.posts.first %>
-      <%= link_to 'Read omitted replies', discussion %>
+      <%= link_to 'Read omitted replies', discussion, :class=>'info' %>
       <%= render discussion.posts.last(AppConfig.last_reply_count) %>
     <% else %>
       <%= render discussion.posts %>
     <% end %>
 
-    <%= link_to 'Reply/Show', discussion %>
-    <%= link_to 'Destroy', discussion, :confirm => 'Are you sure?', :method => :delete %>
+    <div class="action_menu">
+      <%= link_to 'Reply/Show', discussion %>
+      <%= link_to 'Destroy', discussion, :confirm => 'Are you sure?', :method => :delete %>
+    </div>
   </div>
 <% end %>
 <%= paginate @discussions %>

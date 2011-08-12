@@ -19,6 +19,7 @@ form textarea {
   margin:10px 0;
   padding:10px
 }
+
 .post {
   border:1px solid #000;
   margin:10px 0 10px 20px;
@@ -95,3 +96,14 @@ form #discussion_submit.link{
   border-radius: 5px;
   background:none;
 }
+
+/* Futabas shrink-to-fit */
+/*
+.discussion>.action_menu{
+  clear:both;
+}
+.post, .info {
+  float: left;
+  clear: left;
+}
+*/
