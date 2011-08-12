@@ -1,4 +1,5 @@
 $(function(){
+  //Add refer tag into post textarea
   if($('form.edit_discussion').length){
     $('.action_menu a.reply').click(function(e){
       e.preventDefault();
@@ -8,8 +9,18 @@ $(function(){
         t = ta.val() + "\n" + t;
       ta.val(t).focus();
       ta[0].scrollTop = ta[0].scrollHeight;
+
+      $('body, form').addClass('side');
+    });
+  } else {
+    $('form.new_discussion .field').hide();
+    $('#discussion_submit').addClass('link').click(function(e){
+      e.preventDefault();
+      $('form.new_discussion .field').show()
+      $(this).unbind().removeClass();
     });
   }
+  //highlight when jumping to related post
   $('a[href*=#]').click(function(){
       var elemId = '#' + $(this).attr('href').split('#')[1];
       highlight(elemId);

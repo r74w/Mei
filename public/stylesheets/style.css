@@ -1,7 +1,7 @@
 body {
   margin:30px;
 }
-div {
+div, form {
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -9,7 +9,11 @@ div {
 form {
   border:1px solid #000;
   margin:10px 0;
-  padding:10px
+  padding:10px;
+}
+form textarea {
+  height:8em;
+  width: 600px
 }
 .discussion {border:1px solid #000;
   margin:10px 0;
@@ -67,4 +71,27 @@ ol.latest li {
 }
 h2 {
   display:inline;
+}
+
+/* JS */
+body.side{
+  margin-right:400px;
+}
+form.side{
+  position:fixed;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:10px;
+}
+form.side textarea{
+  height:400px;
+  width:100%
+}
+form #discussion_submit.link{
+  font-family: sans-serif;
+  font-size: 24px;
+  border: 1px #000 solid;
+  border-radius: 5px;
+  background:none;
 }
