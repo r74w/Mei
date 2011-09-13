@@ -1,6 +1,7 @@
 # require 'digest/md5'
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  include AuthenticationHelper
 
   protected
   #TODO need to move to Post model
